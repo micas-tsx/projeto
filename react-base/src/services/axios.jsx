@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export default axios.create({
-    baseURL: ''
+    baseURL: 'COLOQUE_SEU_LINK_AQUI'
 }) 
