@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Container } from "../../styles/GlobalStyles";
 import axios from '../../services/axios'
 import { AlunoContainer, ProfilePicture } from '../Aluno/stylesd';
 import { get } from 'lodash'
-import { FaUserCircle } from 'react-icons/fa'
+import { FaUserCircle, FaEdit, FaWindowClose } from 'react-icons/fa'
 
 export default function Alunos() {
   const [alunos, setAlunos] = useState([])
@@ -33,6 +34,14 @@ export default function Alunos() {
 
             <span>{aluno.nome}</span>
             <span>{aluno.email}</span>
+
+            <Link to={`/aluno/${aluno.id}/edit`}>
+              <FaEdit size={16} />
+            </Link>
+
+            <Link to={`/aluno/${aluno.id}/delete`}>
+              <FaWindowClose size={16} />
+            </Link>
           </div>
         ))}
       </AlunoContainer>

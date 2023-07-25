@@ -7,6 +7,11 @@ export const AlunoContainer = styled.div `
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding: 5px 0;
+    }
+
+    div + div {
+        border-top: 1px solid #eee;
     }
 `;
 
