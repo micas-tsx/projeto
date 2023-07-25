@@ -24,4 +24,18 @@ export default function Alunos() {
         {alunos.map(aluno => (
           <div key={String(aluno.id)}>
             <ProfilePicture>
-              {get(aluno,
+              {get(aluno, 'Fotos[0].url', false) ? (
+                <img src={aluno.Fotos[0].url} alt="foto do aluno" />
+              ) : (
+                <FaUserCircle size={36} />
+              )}
+            </ProfilePicture>  
+
+            <span>{aluno.nome}</span>
+            <span>{aluno.email}</span>
+          </div>
+        ))}
+      </AlunoContainer>
+    </Container>
+  )
+}
