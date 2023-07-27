@@ -4,6 +4,7 @@ import * as actions from './actions'
 import * as types from '../example/types'
 import axios from '../../../services/axios'
 import history from '../../../services/history'
+import { get } from 'lodash'
 
     
 function* loginRequest({ payload }) {
@@ -24,7 +25,14 @@ function* loginRequest({ payload }) {
     }
 }
 
+function persistRehaydrate({ payload }) {
+    const token = get(payload, 'auth.token', '')
+    if(!token) return
+    axios.defaults.headers.Authorization = `Bearer ${token}`
+}
+
 export default all([
     takeLatest(types.LOGIN_REQUEST, loginRequest),
+    takeLatest(types.PERSIST_REHYDRATE, persistRehaydrate)
 ]);
 
